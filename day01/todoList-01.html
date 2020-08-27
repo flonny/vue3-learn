@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todoList</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id="todo-list">
+        <h1>todoList</h1>
+        <ul>
+            <todo-item todo-text="123123">
+                123123
+            </todo-item>
+            <li v-for="item in todoItems" :key="item">{{item}}</li>
+        </ul>
+    </div>
+    <script>
+        const { createApp, defineComponent, h } = Vue
+        const todoApp = defineComponent({
+            data() {
+                return {
+                    todoText: '',
+                    todoItems: [
+                        '吃饭',
+                        '睡觉',
+                        '打豆豆'
+                    ]
+                }
+            }
+        })
+        const todoItem = defineComponent({
+            props: {
+                todoText: ''
+            },
+            render() {
+                return h('li',  `${this.todoText}`)
+            }
+        })
+        const app = createApp(todoApp)
+        app.component('todo-item', todoItem)
+        app.mount('#todo-list')
+    </script>
+</body>
+
+</html>
