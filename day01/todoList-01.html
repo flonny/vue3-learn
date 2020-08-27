@@ -11,11 +11,9 @@
 <body>
     <div id="todo-list">
         <h1>todoList</h1>
+        <input type="text" v-model="todoText" @keydown.entey>
         <ul>
-            <todo-item todo-text="123123">
-                123123
-            </todo-item>
-            <li v-for="item in todoItems" :key="item">{{item}}</li>
+            <todo-item v-for="(item,index) in todoItems" :key="index" todo-text="item" />
         </ul>
     </div>
     <script>
